@@ -14,6 +14,9 @@ export type CallbackAction = () => void;
 /** call back function with customized type parameter */
 export type CallbackActionT<T> = (value: T) => void;
 
+/** A key value pair to include a key and a value */
+export type KeyValuePair<K, V> = { key: K; value: V };
+
 /** Tianyu Comparable Interface */
 export interface IComparable {
     /** Get a string what can indicate the object unified */
