@@ -16,6 +16,7 @@ export {
     type CallbackAction,
     type CallbackActionT,
     type IComparable,
+    type KeyValuePair,
 } from "./types/Types";
 
 // utilities

@@ -1,6 +1,6 @@
 {
     "name": "@aitianyu.cn/types",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "private": false,
     "description": "Common modules (types, functions, classes) for aitianyu",
     "main": "./dist/lib/index.js",
