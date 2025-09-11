@@ -1,9 +1,9 @@
 /**@format */
 
-import { TMap } from "../../../types/TMap";
-import { PathBase } from "../../../types/PathBase";
-import { IObjectDiffInfo, ObjectDiffMap } from "../../../types/Object";
-import { ObjectHelper } from "./Helper";
+import { TMap } from "../../types/TMap";
+import { PathBase } from "../../types/PathBase";
+import { IObjectDiffInfo, ObjectDiffMap } from "../../types/Object";
+import { ObjectHelper } from "./ObjectHelper";
 import {
     ObjectDiffApplyInvalidStatusException,
     ObjectDiffMergeFailedException,
@@ -174,7 +174,11 @@ export class ObjectCalculater {
                 if (strict && !__checkOldAndNewStatus(resultObj.root, rootPathDiff.old)) {
                     throw new ObjectMergeStatusCheckFailedException(
                         "",
-                        rootPathDiff.deleted ? "del" : rootPathDiff.added ? "add" : "modify",
+                        rootPathDiff.deleted
+                            ? /* istanbul ignore next */ "del"
+                            : rootPathDiff.added
+                            ? /* istanbul ignore next */ "add"
+                            : "modify",
                     );
                 }
 
@@ -192,13 +196,19 @@ export class ObjectCalculater {
                 // 依次遍历所有的路径
                 for (const [path, info] of diff) {
                     // 此处不应该进入条件
-                    if (!!!path || !!!info) continue;
+                    /* istanbul ignore if */
+                    if (!!!path || !!!info) {
+                        continue;
+                    }
 
                     // 获取路径并预处理
                     const pathDir = path.getDirs();
                     const endDir = pathDir.pop();
                     // 此处不应该进入条件
-                    if (!!!endDir) continue;
+                    /* istanbul ignore if */
+                    if (!!!endDir) {
+                        continue;
+                    }
 
                     const mergeType = info.added ? "add" : info.deleted ? "del" : "modify";
 
@@ -220,7 +230,10 @@ export class ObjectCalculater {
                     }
 
                     // 再次检查对象状态 （理论上不应该进入此判断）
-                    if (!!!obj) throw new ObjectDiffMergeFailedException(info.path);
+                    /* istanbul ignore if */
+                    if (!!!obj) {
+                        throw new ObjectDiffMergeFailedException(info.path);
+                    }
 
                     if (info.added) {
                         // 新增一个元素

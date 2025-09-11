@@ -3,9 +3,9 @@
 import { IObjectDiffInfo } from "../../../src/types/Object";
 import { TMap } from "../../../src/types/TMap";
 import { PathBase } from "../../../src/types/PathBase";
-import { ObjectCalculater } from "../../../src/utilities/core/object/Calculater";
-import { ObjectHelper } from "../../../src/utilities/core/object/Helper";
-import { ObjectDiffApplyInvalidStatusException, ObjectMergeStatusCheckFailedException } from "../../../src/utilities/core/Errors";
+import { ObjectCalculater } from "../../../src/core/object/Calculater";
+import { ObjectHelper } from "../../../src/core/object/ObjectHelper";
+import { ObjectDiffApplyInvalidStatusException, ObjectMergeStatusCheckFailedException } from "../../../src/core/Errors";
 
 describe("aitianyu-cn.node-module.tianyu-types.core.object.ObjectCalculater", () => {
     describe("calculateDiff", () => {

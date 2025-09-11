@@ -1,7 +1,7 @@
 /**@format */
 
 import { LogLevel } from "../../src/types/Logs";
-import { Log, Performance } from "../../src/utilities/core/Log";
+import { Log, Performance } from "../../src/core/Log";
 
 const getLogReg = (name: string, msg: string) => {
     return new RegExp(`\\[${name}\\] \\[[0-9]+:[0-9]+:[0-9]+\\.[0-9]+\\] ${msg}`);

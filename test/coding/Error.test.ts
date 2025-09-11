@@ -4,7 +4,7 @@ import {
     PathProcessorSourceLostException,
     PathDirectoryValidationFailException,
     PathDirAndFileConvertInvaild,
-} from "../../src/utilities/coding/Error";
+} from "../../src/coding/Error";
 
 describe("aitianyu-cn.node-module.tianyu-types.coding.Error", () => {
     it("PathProcessorSourceLostException", () => {

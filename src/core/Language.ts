@@ -1,7 +1,8 @@
 /**@format */
 
-import { AreaCode } from "../../types/AreaCode";
+import { AreaCode } from "../types/AreaCode";
 
+// eslint-disable-next-line complexity
 function _parseAreaString(areaStr?: string, forceArea?: boolean): AreaCode {
     const lowCase: string = areaStr?.toLowerCase() || "zh_cn";
 
@@ -271,6 +272,7 @@ function _parseAreaString(areaStr?: string, forceArea?: boolean): AreaCode {
     }
 }
 
+// eslint-disable-next-line complexity
 function _areaCodeToString(eArea: AreaCode): string {
     switch (eArea) {
         case AreaCode.af_ZA:

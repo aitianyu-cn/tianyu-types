@@ -1,6 +1,6 @@
 /**@format */
 
-import { Exception } from "../../types/Exception";
+import { Exception } from "../types/Exception";
 import { PathTargetType } from "./Path";
 
 /**

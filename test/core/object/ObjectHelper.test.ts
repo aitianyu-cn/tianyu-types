@@ -1,7 +1,7 @@
 /**@format */
 
-import { ObjectCloneFunctionNotSupportException } from "../../../src/utilities/core/Errors";
-import { ObjectHelper } from "../../../src/utilities/core/object/Helper";
+import { ObjectCloneFunctionNotSupportException } from "../../../src/core/Errors";
+import { ObjectHelper } from "../../../src/core/object/ObjectHelper";
 
 describe("aitianyu-cn.node-module.tianyu-types.core.object.ObjectHelper", () => {
     it("isSimpleDataType", () => {

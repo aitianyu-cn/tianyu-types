@@ -1,6 +1,6 @@
 /**@format */
 
-import { Exception } from "../../types/Exception";
+import { Exception } from "../types/Exception";
 
 /** Argument null exception */
 export class ArgumentNullOrEmptyException extends Exception {

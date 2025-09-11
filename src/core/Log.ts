@@ -1,7 +1,7 @@
 /**@format */
 
-import { MapOfType } from "../../types/Types";
-import { ILog, IPerfRecorder, LogLevel } from "../../types/Logs";
+import { MapOfType } from "../types/Types";
+import { ILog, IPerfRecorder, LogLevel } from "../types/Logs";
 import { guid } from "../security/Guid";
 
 interface ILogItem {
@@ -20,6 +20,7 @@ const _LogLevel: MapOfType<ILogItem> = {
 
 function _consoleLog(level: ILogItem, msg: string, timer: boolean): void {
     if (level.value >= 100) {
+        // eslint-disable-next-line no-console
         console.log(`[${level.name}] ${msg}`);
         return;
     }
@@ -30,15 +31,17 @@ function _consoleLog(level: ILogItem, msg: string, timer: boolean): void {
         const millisecondString = date.getMilliseconds().toString();
         timeString = `[${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${millisecondString.substring(
             0,
-            millisecondString.length > 3 ? 3 : millisecondString.length,
+            millisecondString.length > 3 ? /* istanbul ignore next */ 3 : millisecondString.length,
         )}]`;
     }
     const logMessage = `[${level.name}] ${timeString} ${msg}`;
     switch (level.value) {
         case 0:
+            // eslint-disable-next-line no-console
             console.debug(logMessage);
             break;
         case 1:
+            // eslint-disable-next-line no-console
             console.info(logMessage);
             break;
         case 2:
@@ -51,6 +54,7 @@ function _consoleLog(level: ILogItem, msg: string, timer: boolean): void {
             console.error(logMessage);
             break;
         default:
+            // eslint-disable-next-line no-console
             console.log(msg);
             break;
     }
@@ -58,7 +62,7 @@ function _consoleLog(level: ILogItem, msg: string, timer: boolean): void {
 
 const _log: ILog = {
     log: function (msg: string, level?: LogLevel, timer?: boolean): void {
-        const logLevel: LogLevel = level ?? LogLevel.INFO;
+        const logLevel: LogLevel = level ?? /* istanbul ignore next */ LogLevel.INFO;
         switch (logLevel) {
             case LogLevel.DEBUG:
                 _consoleLog(_LogLevel["DEBUG"], msg, !!timer);

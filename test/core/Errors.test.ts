@@ -6,7 +6,7 @@ import {
     ObjectMergeStatusCheckFailedException,
     ObjectDiffApplyInvalidStatusException,
     ObjectDiffMergeFailedException,
-} from "../../src/utilities/core/Errors";
+} from "../../src/core/Errors";
 
 describe("aitianyu-cn.node-module.tianyu-types.core.Errors", () => {
     it("ArgumentNullOrEmptyException", () => {

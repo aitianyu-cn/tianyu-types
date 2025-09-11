@@ -15,7 +15,10 @@ export type CallbackAction = () => void;
 export type CallbackActionT<T> = (value: T) => void;
 
 /** A key value pair to include a key and a value */
-export type KeyValuePair<K, V> = { key: K; value: V };
+export interface KeyValuePair<K, V> {
+    key: K;
+    value: V;
+}
 
 /** Tianyu Comparable Interface */
 export interface IComparable {

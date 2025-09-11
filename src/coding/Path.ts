@@ -1,7 +1,7 @@
 /**@format */
 
-import { PathBase } from "../../types/PathBase";
-import { IComparable } from "../../types/Types";
+import { PathBase } from "../types/PathBase";
+import { IComparable } from "../types/Types";
 import { PathDirAndFileConvertInvaild, PathDirectoryValidationFailException, PathProcessorSourceLostException } from "./Error";
 
 /** The target path type */
@@ -22,7 +22,9 @@ const __charInDirValidation: { [k: string]: { file: boolean; dir: boolean } } = 
 };
 
 function _dirNameChecker(dir: string): DirNameValidation {
-    if (!dir) return "drop";
+    if (!dir) {
+        return "drop";
+    }
 
     for (const ch of dir) {
         const validation = __charInDirValidation[ch];
@@ -35,27 +37,40 @@ function _dirNameChecker(dir: string): DirNameValidation {
 }
 
 function _dirFileTypeChecker(src: string): DirFileType {
-    if (!src) return "drop";
+    if (!src) {
+        return "drop";
+    }
 
     let dirType: boolean = false;
     let fileType: boolean = false;
     for (const char of src) {
         const validation = __charInDirValidation[char];
         if (dirType) {
-            if (validation && !validation.dir) return "invalid";
+            if (validation && !validation.dir) {
+                return "invalid";
+            }
         } else if (fileType) {
-            if (validation && !validation.file) return "invalid";
+            if (validation && !validation.file) {
+                return "invalid";
+            }
         } else {
             if (validation) {
-                if (validation.dir && !validation.file) dirType = true;
-                else if (!validation.dir && validation.file) fileType = true;
-                else if (!validation.dir && !validation.file) return "invalid";
+                if (validation.dir && !validation.file) {
+                    dirType = true;
+                } else if (!validation.dir && validation.file) {
+                    fileType = true;
+                } else if (!validation.dir && !validation.file) {
+                    return "invalid";
+                }
             }
         }
     }
 
-    if ((!dirType && !fileType) || dirType) return "directory";
-    else return "file";
+    if ((!dirType && !fileType) || dirType) {
+        return "directory";
+    } else {
+        return "file";
+    }
 }
 
 function _parsePathFromString(src: string): IPath {
@@ -112,19 +127,21 @@ export class Path extends PathBase implements IComparable {
     public constructor(dirs?: string[] | string, type?: PathTargetType, file?: string) {
         super();
 
+        let actType = type;
+        let actFile = file;
         if (typeof dirs === "string") {
             const parsePath = _parsePathFromString(dirs);
-            if (type && type != parsePath.type) {
+            if (type && type !== parsePath.type) {
                 throw new PathDirAndFileConvertInvaild(dirs, parsePath.type);
             }
             this._dirs = parsePath.dirs;
-            type = parsePath.type;
-            file = parsePath.file;
+            actType = parsePath.type;
+            actFile = parsePath.file;
         } else if (Array.isArray(dirs)) {
             this._dirs = dirs;
         }
-        this._type = type || (file && "file") || "directory";
-        this._file = file;
+        this._type = actType || (actFile && "file") || "directory";
+        this._file = actFile;
     }
 
     /**
@@ -151,7 +168,9 @@ export class Path extends PathBase implements IComparable {
             }
         }
         const file = this.getFile();
-        if (!!file) dirs.push(file);
+        if (!!file) {
+            dirs.push(file);
+        }
 
         if (dirs.length === 0) {
             return "";

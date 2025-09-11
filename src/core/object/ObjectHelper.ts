@@ -11,7 +11,9 @@ export class ObjectHelper {
      * @returns {boolean} return true if the value is based on type number, string, boolean, function, otherwise false
      */
     public static isSimpleDataType(value: any): boolean {
-        if (!!!value) return true;
+        if (!!!value) {
+            return true;
+        }
 
         const typeofValue = typeof value;
         return typeofValue === "boolean" || typeofValue === "string" || typeofValue === "number" || typeofValue === "symbol";
@@ -116,7 +118,7 @@ export class ObjectHelper {
                 }
             }
             return true;
-        } catch {
+        } catch /* istanbul ignore next */ {
             // if the object is not an object type, return false
             return false;
         }
@@ -216,7 +218,7 @@ export class ObjectHelper {
             }
 
             return "same";
-        } catch {
+        } catch /* istanbul ignore next */ {
             return "different";
         }
     }

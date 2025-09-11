@@ -4,8 +4,8 @@ import {
     PathDirAndFileConvertInvaild,
     PathDirectoryValidationFailException,
     PathProcessorSourceLostException,
-} from "../../src/utilities/coding/Error";
-import { Path } from "../../src/utilities/coding/Path";
+} from "../../src/coding/Error";
+import { Path } from "../../src/coding/Path";
 
 describe("aitianyu-cn.node-module.tianyu-types.coding.Path", () => {
     describe("parsePathFromString", () => {

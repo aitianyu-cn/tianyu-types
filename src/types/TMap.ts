@@ -45,8 +45,9 @@ export class TMap<K extends IComparable, V> {
      */
     public forEach(callbackfn: (value: V, key: K, map: Map<K, V>) => void, thisArg?: any): void {
         const runMap = new Map<K, V>();
-        this._map.forEach((value: V, key: string, map: Map<string, V>) => {
+        this._map.forEach((value: V, key: string, _map: Map<string, V>) => {
             const keyObj = this._kMap.get(key);
+            /* istanbul ignore if */
             if (!!!keyObj) {
                 return;
             }
@@ -125,7 +126,7 @@ export class TMap<K extends IComparable, V> {
      *
      * @returns return an iterator object
      */
-    [Symbol.iterator](): Iterator<[K | undefined, V | undefined]> {
+    public [Symbol.iterator](): Iterator<[K | undefined, V | undefined]> {
         const keys = this._map.entries();
         const iteratorObj: Iterator<[K | undefined, V | undefined]> = {
             next: () => {

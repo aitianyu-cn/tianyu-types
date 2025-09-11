@@ -33,7 +33,7 @@ export class PathBase implements IComparable {
      *
      * @returns return an iterator
      */
-    [Symbol.iterator]() {
+    public [Symbol.iterator]() {
         let index = 0;
         return {
             next: () => {

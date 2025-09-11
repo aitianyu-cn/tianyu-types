@@ -1,8 +1,8 @@
 /**@format */
 
-import { ArrayHelper } from "../../../src/utilities/core/object/ArrayHelper";
+import { ArrayHelper } from "../../../src/core/object/ArrayHelper";
 
-describe("aitianyu-cn.node-module.tianyu-types.core.object.Operator", () => {
+describe("aitianyu-cn.node-module.tianyu-types.core.object.ArrayHelper", () => {
     describe("ArrayHelper", () => {
         describe("merge", () => {
             it("no parameter assigned", () => {

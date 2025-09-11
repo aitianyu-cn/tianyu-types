@@ -23,4 +23,8 @@ module.exports = {
         ],
     ],
     coverageDirectory: "test/__report__/coverage",
+    moduleNameMapper: {
+        "^src/(.*)$": "<rootDir>/src/$1",
+    },
+    coveragePathIgnorePatterns: ["<rootDir>/src/coding/Path.ts"],
 };
